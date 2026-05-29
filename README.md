@@ -1,287 +1,332 @@
-KPI System
+# Stratify KPI Management System
 
-A KPI System in a C# Windows Forms App is a desktop-based performance monitoring system that helps an organization track, measure, and evaluate key performance indicators across departments, employees, projects, or business processes.
+<div align="center">
 
-The system should be designed like a business dashboard + reporting tool, where users can input targets, record actual performance, view analytics, generate reports, and monitor progress in real time.
+# 📊 Stratify
 
-System Description
+### Modern KPI Management & Performance Analytics Platform
 
-The KPI System will allow authorized users to define KPIs, assign them to departments or employees, set target values, track actual results, and evaluate performance using visual indicators such as charts, progress bars, status colors, and summary reports.
+Track. Measure. Analyze. Improve.
 
-It will be built using C# Windows Forms for the desktop interface, connected to a backend database such as SQL Server or MySQL. The system may also use APIs for authentication, reporting, notifications, and data synchronization.
+![Platform](https://img.shields.io/badge/Platform-Windows%20Desktop-blue)
+![Framework](https://img.shields.io/badge/.NET-8.0-purple)
+![API](https://img.shields.io/badge/API-ASP.NET%20Core-green)
+![Database](https://img.shields.io/badge/Database-SQL%20Server-red)
+![Status](https://img.shields.io/badge/Status-In%20Development-orange)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-Recommended Technology Stack
+</div>
 
-Frontend / Desktop App
+---
 
-C# Windows Forms
-.NET 6 / .NET 8 Windows Forms
-Guna UI / Bunifu UI / DevExpress / Telerik for modern UI components
-LiveCharts2 or ScottPlot for charts and graphs
+## 🚀 Overview
 
-Backend / Data Layer
+**Stratify** is a modern KPI (Key Performance Indicator) Management System designed to help organizations monitor performance, evaluate employee productivity, track departmental objectives, and make data-driven decisions through powerful analytics and reporting.
 
-SQL Server or MySQL
-Entity Framework Core or Dapper
-REST API using ASP.NET Core Web API, optional but recommended
-Repository Pattern and Service Layer for cleaner architecture
+Built using **C# Windows Forms**, **ASP.NET Core Web API**, and **SQL Server**, Stratify provides a centralized platform for managing organizational goals and performance metrics in real time.
 
-Reports
+---
 
-RDLC Report Viewer
-Crystal Reports
-Microsoft Excel export using ClosedXML or EPPlus
-PDF export using QuestPDF or iTextSharp
+## ✨ Features
 
-Authentication
+### 📈 KPI Management
 
-Local database login
-ASP.NET Core Identity if using a Web API
-JWT token authentication if the WinForms app connects to an API
-APIs That Can Be Used
+* Create and manage KPIs
+* Assign KPIs to departments and employees
+* Set targets and deadlines
+* Monitor progress and completion rates
+* KPI categorization and prioritization
 
-The system can use several APIs depending on the requirements:
+### 📊 Analytics Dashboard
 
-1. ASP.NET Core Web API
+* Real-time KPI overview
+* Performance scorecards
+* Department comparison analytics
+* Employee productivity tracking
+* Interactive charts and visual reports
 
-Used as the main backend API for:
+### 👥 User & Role Management
 
-User login
-KPI creation
-KPI updates
-Fetching dashboard data
-Generating reports
-Managing departments, users, and roles
+* Secure authentication
+* Role-based access control (RBAC)
+* Admin, Manager, Employee, and Viewer roles
+* User profile management
 
-Example endpoints:
+### 🔔 Notifications & Alerts
 
-POST /api/auth/login
-GET /api/kpis
-POST /api/kpis
-PUT /api/kpis/{id}
-GET /api/dashboard/summary
-GET /api/reports/kpi-performance
+* KPI deadline reminders
+* Overdue KPI alerts
+* Performance warning notifications
+* Approval request notifications
 
-2. Email API
+### 📄 Reporting System
 
-Used for notifications when KPIs are below target or deadlines are near.
+* Monthly reports
+* Quarterly reports
+* Department reports
+* Employee performance reports
+* Export to PDF, Excel, and CSV
 
-Options:
+### 📝 Audit Trail
 
-SMTP
-SendGrid API
-MailKit
+* Activity tracking
+* KPI modification history
+* Login history
+* Approval records
+* System logs
 
-3. Excel / PDF Export API or Library
+---
 
-Used to export reports.
+## 🏗️ System Architecture
 
-Recommended libraries:
+```text
+┌──────────────────────┐
+│   WinForms Client    │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ ASP.NET Core Web API │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│     SQL Server       │
+└──────────────────────┘
+```
 
-ClosedXML for Excel
-EPPlus for Excel
-QuestPDF for PDF
+### Architecture Pattern
 
-4. Charting Library
-
-Used for visual KPI dashboards.
-
-Recommended:
-
-LiveCharts2
-ScottPlot
-DevExpress Charts
-
-5. Windows Notification API
-
-Used for local desktop notifications.
-
-Example uses:
-
-KPI deadline reminder
-Low performance alert
-Pending approval notification
-Best Features to Include
-
-The best KPI system should include:
-
-Dashboard Overview
-
-The dashboard should show total KPIs, achieved KPIs, delayed KPIs, failed KPIs, and overall performance percentage.
-
-KPI Management
-
-Users should be able to create, edit, archive, and assign KPIs.
-
-Each KPI may include:
-
-KPI name
-Description
-Target value
-Actual value
-Unit of measurement
-Department
-Assigned employee
-Start date
-End date
-Status
-Weight or priority
-
-Performance Scoring
-
-The system should automatically calculate performance scores.
-
-Example:
-
-Performance Score = Actual Value / Target Value * 100
-
-Then classify results as:
-
-90% - 100% = Excellent
-75% - 89% = Good
-50% - 74% = Needs Improvement
-Below 50% = Critical
-
-Visual Status Indicators
-
-Use colors for quick understanding:
-
-Green = On Target
-Yellow = Warning
-Red = Below Target
-Blue = Completed
-Gray = Not Started
-
-Charts and Analytics
-
-Include:
-
-Monthly KPI trend
-Department performance comparison
-Employee KPI ranking
-Completed vs failed KPIs
-Target vs actual chart
-
-Role-Based Access Control
-
-Example roles:
-
-Admin
-Manager
-Employee
-Viewer
-
-Admin can manage everything. Managers can assign and approve KPIs. Employees can update their progress. Viewers can only read reports.
-
-Audit Trail
-
-Track important actions such as:
-
-Who created a KPI
-Who updated performance
-Who approved results
-Date and time of changes
-
-Notifications
-
-Notify users when:
-
-KPI deadline is near
-KPI is below target
-KPI needs approval
-Monthly report is ready
-
-Report Generation
-
-Generate reports by:
-
-Department
-Employee
-Month
-Quarter
-Year
-KPI category
-Performance status
-
-Reports should support export to:
-
-PDF
-Excel
-CSV
-Suggested Architecture
-
-Use a clean layered structure:
-
-KPI.WinForms
-KPI.Core
-KPI.Data
-KPI.Services
-KPI.API
-
-Where:
-
-KPI.WinForms = user interface
-KPI.Core = models and business rules
-KPI.Data = database access
-KPI.Services = KPI calculations and logic
-KPI.API = optional backend API
-
-This makes the system easier to maintain, test, and upgrade.
-
-How to Deliver the System Properly
-
-Start by delivering the system in phases.
-
-Phase 1: Core System
-
-Login
-User management
-Department management
-KPI creation
-KPI assignment
-KPI progress update
-
-Phase 2: Dashboard and Reports
-
-Dashboard summary
-Charts
-KPI scoring
-PDF and Excel reports
-
-Phase 3: Advanced Features
-
-Notifications
-Audit trail
-Role-based permissions
-API integration
-Backup and restore
-
-Phase 4: Testing and Deployment
-
-Test all forms
-Validate inputs
-Test database connection
-Test reports
-Test role permissions
-Package the app using ClickOnce, MSIX, or installer setup
-Deployment Recommendation
-
-For a school or office environment, the best setup is:
-
-Windows Forms App → ASP.NET Core Web API → SQL Server Database
-
-This is better than connecting the WinForms app directly to the database because it is more secure, easier to maintain, and easier to scale.
-
-Final recommended stack:
-
-C# Windows Forms
-.NET 8
+* Clean Architecture
+* Repository Pattern
+* Service Layer Pattern
+* Dependency Injection
+* RESTful API Design
+* Entity Framework Core
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+
+* C# Windows Forms
+* Guna.UI2.WinForms
+* LiveCharts2
+
+### Backend
+
+* ASP.NET Core Web API
+* Entity Framework Core
+
+### Database
+
+* Microsoft SQL Server
+
+### Reporting
+
+* QuestPDF
+* ClosedXML
+
+### Security
+
+* JWT Authentication
+* Password Hashing
+* Role-Based Authorization
+
+---
+
+## 📂 Solution Structure
+
+```text
+Stratify/
+│
+├── Stratify.WinForms/
+│   ├── Forms
+│   ├── Controls
+│   ├── Services
+│   └── Resources
+│
+├── Stratify.API/
+│   ├── Controllers
+│   ├── Middleware
+│   ├── Extensions
+│   └── Configuration
+│
+├── Stratify.Core/
+│   ├── Entities
+│   ├── DTOs
+│   ├── Interfaces
+│   └── Enums
+│
+├── Stratify.Data/
+│   ├── Context
+│   ├── Repositories
+│   ├── Configurations
+│   └── Migrations
+│
+├── Stratify.Services/
+│   ├── KPI Services
+│   ├── Authentication
+│   ├── Reporting
+│   └── Notifications
+│
+└── Documentation/
+```
+
+---
+
+## 🗄️ Database Modules
+
+### Core Tables
+
+* Users
+* Roles
+* Departments
+* KPIs
+* KPIAssignments
+* KPIProgressUpdates
+* KPIApprovals
+* Notifications
+* AuditLogs
+
+---
+
+## 🎯 KPI Scoring System
+
+Performance scores are calculated automatically:
+
+```text
+Performance Score =
+(Actual Value ÷ Target Value) × 100
+```
+
+### KPI Status Levels
+
+| Score      | Status            |
+| ---------- | ----------------- |
+| 90% - 100% | Excellent         |
+| 75% - 89%  | Good              |
+| 50% - 74%  | Needs Improvement |
+| Below 50%  | Critical          |
+
+---
+
+## 🎨 User Interface
+
+Stratify features a modern enterprise-grade UI with:
+
+* Blue-themed dashboard
+* Modern card layouts
+* Interactive charts
+* Responsive resizing
+* Smooth navigation
+* Professional data tables
+* KPI widgets and statistics
+* Dark and light mode support (planned)
+
+### Theme Colors
+
+| Color      | Hex     |
+| ---------- | ------- |
+| Dark Blue  | #0F172A |
+| Royal Blue | #2563EB |
+| Sky Blue   | #38BDF8 |
+| White      | #FFFFFF |
+| Light Gray | #F1F5F9 |
+
+---
+
+## 🔒 Security Features
+
+* JWT Authentication
+* Password Encryption
+* Role-Based Access Control
+* Secure API Communication
+* Audit Logging
+* Session Management
+
+---
+
+## 🚀 Deployment
+
+### Production Architecture
+
+```text
+Client Computers
+       │
+       ▼
+Stratify WinForms Application
+       │
+       ▼
 ASP.NET Core Web API
-SQL Server
-Entity Framework Core
-LiveCharts2
-ClosedXML
-QuestPDF
-MailKit
+       │
+       ▼
+SQL Server Database
+```
 
-This will make the KPI system professional, maintainable, and suitable for real business use.
+### Recommended Hosting
+
+#### API Hosting
+
+* IIS (Windows Server)
+* Azure App Service
+* SmarterASP.NET
+
+#### Database Hosting
+
+* SQL Server
+* Azure SQL Database
+
+---
+
+## 📸 Planned Screens
+
+* Splash Screen
+* Login Screen
+* Dashboard
+* KPI Management
+* Reports & Analytics
+* User Management
+* Notifications Center
+* Settings
+
+---
+
+## 🔮 Future Enhancements
+
+* Mobile Companion App
+* Email Notifications
+* SMS Notifications
+* AI Performance Insights
+* Predictive KPI Analytics
+* Multi-Organization Support
+* Cloud Synchronization
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to your branch
+5. Create a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+<div align="center">
+
+### Stratify KPI Management System
+
+Empowering organizations through performance intelligence.
+
+</div>
